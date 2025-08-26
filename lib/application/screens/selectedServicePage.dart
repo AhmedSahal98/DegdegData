@@ -161,7 +161,7 @@ class _SelectedServicePageState extends State<SelectedServicePage> {
                     text: TextSpan(
                       text: '\$${provider.price} ',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: Color(0xff8F9193),
                         decoration: provider.orignalPrice == ''
@@ -174,7 +174,7 @@ class _SelectedServicePageState extends State<SelectedServicePage> {
                               ? ' \$${provider.orignalPrice}'
                               : '',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             decoration: TextDecoration.none,
@@ -187,7 +187,7 @@ class _SelectedServicePageState extends State<SelectedServicePage> {
                           text:
                               provider.label != null ? '${provider.label}' : '',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff8F9193),
                             decoration: TextDecoration.none,
