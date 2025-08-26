@@ -5,11 +5,14 @@ class ShirkadaModel {
   String? img;
   List<AdeegyadaModel>? adeegyada;
   List<SlidersModel>? sliders;
+  CompanyDetailModel? companyDetail;
+
   ShirkadaModel({
     required this.name,
     required this.img,
     this.adeegyada,
     this.sliders,
+    this.companyDetail,
   });
 
   factory ShirkadaModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +28,9 @@ class ShirkadaModel {
           ? (json['slider'] as List)
               .map((e) => SlidersModel.fromJson(e))
               .toList()
+          : null,
+      companyDetail: json['company_detail'] != null
+          ? CompanyDetailModel.fromJson(json['company_detail'])
           : null,
     );
   }
@@ -58,5 +64,37 @@ class SlidersModel {
       'url': url,
     };
   }
-  
+}
+
+class CompanyDetailModel {
+  final String? phone;
+  final String? mobile;
+  final String? whatsappLink;
+
+  CompanyDetailModel({
+    this.phone,
+    this.mobile,
+    this.whatsappLink,
+  });
+
+  factory CompanyDetailModel.fromJson(Map<String, dynamic> json) {
+    return CompanyDetailModel(
+      phone: json['phone'],
+      mobile: json['mobile'],
+      whatsappLink: json['whatsapp_link'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'phone': phone,
+      'mobile': mobile,
+      'whatsapp_link': whatsappLink,
+    };
+  }
+
+  @override
+  String toString() {
+    return 'CompanyDetail(phone: $phone, mobile: $mobile, whatsappLink: $whatsappLink)';
+  }
 }

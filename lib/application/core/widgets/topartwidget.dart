@@ -1,10 +1,11 @@
 import 'package:degdeg_app/application/screens/HelpCenter%20.dart';
+import 'package:degdeg_app/model/shirkadahaModel.dart';
 import 'package:flutter/material.dart';
 
 class Topartwidget extends StatelessWidget {
-  const Topartwidget({
-    super.key,
-  });
+  final CompanyDetailModel? companyDetail;
+
+  const Topartwidget({super.key, this.companyDetail});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class Topartwidget extends StatelessWidget {
                       context,
                       PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) {
-                          return HelpCenter();
+                          return HelpCenter(companyDetail: companyDetail,);
                         },
                         transitionsBuilder:
                             (context, animation, secondaryAnimation, child) {

@@ -52,11 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         if (state is LoadedState) {
           banners = state.shirkadahaSliders;
+          final company = state.shirkadaha.first.companyDetail;
           return Scaffold(
             backgroundColor: Colors.white,
             body: Column(
               children: [
-                Topartwidget(),
+                Topartwidget(companyDetail: company,),
                 Expanded(
                   child: Container(
                     width: double.maxFinite,

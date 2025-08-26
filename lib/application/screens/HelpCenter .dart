@@ -1,27 +1,26 @@
 import 'package:degdeg_app/application/core/widgets/topartwidget.dart';
+import 'package:degdeg_app/model/shirkadahaModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HelpCenter extends StatefulWidget {
-  HelpCenter({super.key});
+  final CompanyDetailModel? companyDetail;
+  HelpCenter({super.key, this.companyDetail});
 
   @override
   _HelpCenterState createState() => _HelpCenterState();
 }
 
 class _HelpCenterState extends State<HelpCenter> {
-  @override
-  final String phoneNumber = "+252613187029";
-
   void launchWhatsapp() async {
-    final Uri phoneUri = Uri.parse('https://wa.me/$phoneNumber');
+    final Uri phoneUri = Uri.parse('${widget.companyDetail?.whatsappLink}');
     launchUrl(phoneUri);
   }
 
   void makePhoneCall() async {
-    final Uri phoneUri = Uri.parse('tel:$phoneNumber');
+    final Uri phoneUri = Uri.parse('tel:${widget.companyDetail?.phone}');
     if (await canLaunchUrl(phoneUri)) {
       await launchUrl(phoneUri);
     } else {
@@ -29,6 +28,7 @@ class _HelpCenterState extends State<HelpCenter> {
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -50,7 +50,8 @@ class _HelpCenterState extends State<HelpCenter> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Image.asset('assets/images/icons8-u-turn-to-left-24.png'),
+                        child: Image.asset(
+                            'assets/images/icons8-u-turn-to-left-24.png'),
                       ),
                     ],
                   ),
