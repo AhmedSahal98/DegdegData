@@ -157,43 +157,46 @@ class _SelectedServicePageState extends State<SelectedServicePage> {
                           color: Colors.grey.withOpacity(0.1), width: 0.5),
                     ),
                   ),
-                  child: RichText(
-                    text: TextSpan(
-                      text: '\$${provider.price} ',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff8F9193),
-                        decoration: provider.orignalPrice == ''
-                            ? TextDecoration.none
-                            : TextDecoration.lineThrough,
+                  child: Padding(
+                    padding:  EdgeInsets.only(left:5,right: 5),
+                    child: RichText(
+                      text: TextSpan(
+                        text: '\$${provider.price} ',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff8F9193),
+                          decoration: provider.orignalPrice == ''
+                              ? TextDecoration.none
+                              : TextDecoration.lineThrough,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: provider.orignalPrice != null
+                                ? ' \$${provider.orignalPrice}'
+                                : '',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                          TextSpan(
+                              text: ' / ',
+                              style: TextStyle(decoration: TextDecoration.none)),
+                          TextSpan(
+                            text:
+                                provider.label != null ? '${provider.label}' : '',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff8F9193),
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ],
                       ),
-                      children: [
-                        TextSpan(
-                          text: provider.orignalPrice != null
-                              ? ' \$${provider.orignalPrice}'
-                              : '',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                        TextSpan(
-                            text: ' / ',
-                            style: TextStyle(decoration: TextDecoration.none)),
-                        TextSpan(
-                          text:
-                              provider.label != null ? '${provider.label}' : '',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff8F9193),
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ),
