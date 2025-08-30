@@ -13,10 +13,23 @@ class ShirkadahaRep {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = jsonDecode(response.body);
-        print('data: $data');
+
+        final companyDetailJson = data['message']['company_detail'];
+
         final List<dynamic> list = data['message']['grouped_data'];
-        await prefs.setString('myList', jsonEncode(list));
-        return list.map((e) => ShirkadaModel.fromJson(e)).toList();
+        await prefs.setString(
+            'myList',
+            jsonEncode({
+              'list': list,
+              'company_detail': companyDetailJson,
+            }));
+
+        return list.map((e) {
+          return ShirkadaModel.fromJson({
+            ...e,
+            'company_detail': companyDetailJson,
+          });
+        }).toList();
       } else {
         return _getStoredData(prefs);
       }
@@ -29,11 +42,21 @@ class ShirkadahaRep {
   Future<List<ShirkadaModel>> _getStoredData(SharedPreferences prefs) async {
     final String? storedListString = prefs.getString('myList');
 
-    print('data-: $storedListString');
+    print('data--: $storedListString');
     if (storedListString != null) {
-      final List<dynamic> storedList = jsonDecode(storedListString);
+      final Map<String, dynamic> storedData = jsonDecode(storedListString);
 
-      return storedList.map((e) => ShirkadaModel.fromJson(e)).toList();
+      final List<dynamic> storedList = storedData['list'];
+      final dynamic companyDetailJson = storedData['company_detail'];
+
+      print('Stored company_detail: $companyDetailJson');
+
+      return storedList.map((e) {
+        return ShirkadaModel.fromJson({
+          ...e,
+          'company_detail': companyDetailJson,
+        });
+      }).toList();
     } else {
       return <ShirkadaModel>[];
     }
