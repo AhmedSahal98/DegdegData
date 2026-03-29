@@ -82,37 +82,37 @@ class _ServicesState extends State<Services> {
                           thickness: 1,
                           color: Colors.grey.withOpacity(0.1),
                         ),
-                        ListTile(
-                          contentPadding:
-                              EdgeInsets.only(left: 15, right: 15),
-                          leading: Container(
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: Image.asset('assets/images/evc.png'),
-                          ),
-                          title: Text(
-                            ' EVC Plus',
-                            style: TextStyle(
-                                color: Color(0xff4A5763),
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12),
-                          ),
-                          subtitle: Text(
-                            '612504073',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16),
-                          ),
-                          trailing: Icon(Icons.expand_more),
-                        ),
-                        Divider(
-                          thickness: 1,
-                          color: Colors.grey.withOpacity(0.1),
-                        ),
+                        // ListTile(
+                        //   contentPadding:
+                        //       EdgeInsets.only(left: 15, right: 15),
+                        //   leading: Container(
+                        //     padding: EdgeInsets.all(12),
+                        //     decoration: BoxDecoration(
+                        //       shape: BoxShape.circle,
+                        //       color: Colors.white,
+                        //     ),
+                        //     child: Image.asset('assets/images/evc.png'),
+                        //   ),
+                        //   title: Text(
+                        //     ' EVC Plus',
+                        //     style: TextStyle(
+                        //         color: Color(0xff4A5763),
+                        //         fontWeight: FontWeight.w400,
+                        //         fontSize: 12),
+                        //   ),
+                        //   subtitle: Text(
+                        //     '612504073',
+                        //     style: TextStyle(
+                        //         color: Colors.black,
+                        //         fontWeight: FontWeight.w700,
+                        //         fontSize: 16),
+                        //   ),
+                        //   trailing: Icon(Icons.expand_more),
+                        // ),
+                        // Divider(
+                        //   thickness: 1,
+                        //   color: Colors.grey.withOpacity(0.1),
+                        // ),
                         const SizedBox(height: 12),
                         _selectedServiceDetails(
                             selectedIndex!, widget.serviceDetailModel),
